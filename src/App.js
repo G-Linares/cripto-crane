@@ -25,9 +25,18 @@ const app = () => {
                         </Routes>
                     </div>
                 </Layout>
-            </div>
-            <div className = "footer">
-
+            
+                <div className = "footer">
+                    <Typography.Title level ={5} style = {{color: 'white', textAlign: 'center'}}>
+                        Crypto Crane <br/>
+                        Todos los derechos reservados
+                    </Typography.Title>
+                    <Space>
+                        <Link to="/">Home</Link>
+                        <Link to="/exchanges">Cambios</Link>
+                        <Link to="/news">Noticias</Link>
+                    </Space>
+                </div>
             </div>
         </div>
     )
