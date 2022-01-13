@@ -1,7 +1,7 @@
 import React , {useState, useEffect} from 'react';
 import { Button, Typography, Avatar, Menu } from 'antd';
 import { Link} from 'react-router-dom';
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, ContactsOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 import icon from '../images/logo.png';
 
 
@@ -30,7 +30,7 @@ const Navbar = () => {
     return (
         <div className = "nav-container">
             <div className = "logo-container">
-                <Avatar src={icon} size="large" />
+                <Avatar src={icon} size={120} />
                 <Typography.Title level={2} className="logo">
                     <Link to ="/">Crypto Crane</Link>
                 </Typography.Title>
@@ -46,12 +46,13 @@ const Navbar = () => {
                     <Menu.Item icon={<FundOutlined/>}>
                         <Link to = "/cryptocurrencies">Cripto Monedas</Link>
                     </Menu.Item>
-                    <Menu.Item icon={<MoneyCollectOutlined/>}>
-                        <Link to = "/exchanges">Cambios</Link>
-                    </Menu.Item>
                     <Menu.Item icon={<BulbOutlined/>}>
                         <Link to = "/news">Noticias</Link>
                     </Menu.Item>
+                    <Menu.Item icon={<ContactsOutlined />}>
+                        <Link to = "/contact">Contacto</Link>
+                    </Menu.Item>
+                    
                 </Menu>
             )}
 

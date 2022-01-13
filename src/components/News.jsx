@@ -14,18 +14,23 @@ const demoImage = "../images/demoimage.jpg";
 
 const News = ({ simplified }) => {
     const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
-    const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+    const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 24 });
     const { data } = useGetCryptosQuery(100);
 
     if (!cryptoNews?.value) return <Loading/>;
 
     return (
         <Row gutter={[24, 24]}>
+            
             {!simplified && (
+                
                 <Col span={24}>
+                    <Title className="main-title">
+                        Últimas Noticias
+                    </Title>
                     < Select 
                         showSearch 
-                        className="selec-news" 
+                        className="select-news" 
                         placeholder="Selecciona una Cripto" 
                         optionFilterProp="children" 
                         onChange={(value) => setNewsCategory(value)}
