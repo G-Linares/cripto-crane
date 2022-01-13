@@ -34,11 +34,23 @@ const CryptoDetails = () => {
       { title: 'Circulating Supply', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
     ];
   
+    if(isFetching) return 'Cargando...'
 
     return (
-        <div>
-            CryptoDetails { coinId }
-        </div>
+        <Col className="coin-detail-container">
+            <Col className="coin-heading-container">
+                <Title level={2} className="coin-name">
+                    {cryptoDetails.name}({cryptoDetails.symbol}) Precio
+                </Title>
+                <p>
+                    {cryptoDetails.name} Precio real en Dólares.
+                    Visualiza el valor, estadísticas, capitalización bursátil y demanda.
+                </p>
+            </Col>
+            <Select defaultValue="7d" className='select-timeperiod'placeholder="Selecciona Periodo de Tiempo" onChange={(value) => setTimePeriod(value)}>
+
+            </Select>
+        </Col>
     )
 }
 
