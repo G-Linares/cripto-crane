@@ -19,11 +19,11 @@ const CryptoDetails = () => {
     const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
     const stats = [
-      { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
-      { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-      { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
-      { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
-      { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
+      { title: 'Precio en USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
+      { title: 'Puesto', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
+      { title: 'Variación', value: ` ${cryptoDetails?.change}%`, icon: <ThunderboltOutlined /> },
+      { title: 'Capitalización Bursátil', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
+      { title: 'Su Punto Más Alto (Promedio Diario)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
     ];
   
     const genericStats = [
@@ -48,10 +48,28 @@ const CryptoDetails = () => {
                 </p>
             </Col>
             <Select defaultValue="7d" className='select-timeperiod'placeholder="Selecciona Periodo de Tiempo" onChange={(value) => setTimePeriod(value)}>
-
+                {time.map((date) => <Option key={date}>{date}</Option>)}
             </Select>
+            {/* aqui va el chart */}
+            <Col className="stats-container">
+                <Col className="coin-value-statistics">
+                    <Col className="coin-value-statistics-heading">
+                        <Title level={3} className="coin-details-heading">{cryptoDetails.name} Estadísticas de Valor </Title>
+                        <p>Un resumen de las estadísticas de valor de {cryptoDetails.name}, así como su base, el precio actual, rango y volumen de intercambio.</p>
+                    </Col>
+                    {stats.map(({ icon, title, value }) => (
+                        <Col className="coin-stats">
+                            <Col className="coin-stats-name">
+                                <Text>{icon}</Text>
+                                <Text>{title}</Text>
+                            </Col>
+                            <Text className="stats">{value}</Text>
+                        </Col>
+                    ))}
+                </Col>
+            </Col>
         </Col>
-    )
-}
+    );
+};
 
-export default CryptoDetails
+export default CryptoDetails;
