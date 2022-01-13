@@ -7,6 +7,8 @@ import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCi
 
 import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi';
 import LineChart from './LineChart';
+//faltaba importar Category Scale
+import Chart from 'chart.js/auto';
 
 const { Title, Text} = Typography;
 const { Option } = Select;
@@ -53,7 +55,9 @@ const CryptoDetails = () => {
                 {time.map((date) => <Option key={date}>{date}</Option>)}
             </Select>
             {/* aqui va el chart, la grafica */}
-            <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
+            <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name}/>
+           
+            
 
             <Col className="all-stats-container">
             <Col className="stats-container">
