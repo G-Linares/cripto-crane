@@ -9,6 +9,7 @@ import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/
 import LineChart from './LineChart';
 //faltaba importar Category Scale
 import Chart from 'chart.js/auto';
+import Loader from './Loader'; 
 
 const { Title, Text} = Typography;
 const { Option } = Select;
@@ -38,7 +39,7 @@ const CryptoDetails = () => {
       { title: 'Suministro Circulante', value: `$ ${cryptoDetails?.supply?.circulating && millify(cryptoDetails?.supply?.circulating)}`, icon: <ExclamationCircleOutlined /> },
     ];
   
-    if(isFetching) return 'Cargando...'
+    if(isFetching) return <Loader/>;
 
     return (
         <Col className="coin-detail-container">
